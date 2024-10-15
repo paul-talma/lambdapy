@@ -22,3 +22,9 @@ Terms of the first kind are _variables_, terms of the second kind are _(function
 
 To represent lambda expressions, we define a `Term` class, which the `Variable`, `Abstraction`, and `Application` classes subclass.
 The `Term` class implements operations common to all lambda terms, such as application and abstraction.
+
+# TODOs
+
+- [ ] build CLI
+- [ ] implement parser
+- [ ] pretty print expressions
