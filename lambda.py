@@ -1,5 +1,4 @@
 # TODO: use introspection to move methods to Term class
-# TODO: add type annotations
 class Term:
     pass
 
@@ -24,10 +23,10 @@ class Abstraction(Term):
         self.expr = expr
 
     def evaluate(self):
-        pass
+        return self
 
     def __repr__(self) -> str:
-        return f"lambda {self.var} . {self.expr}"
+        return f"λ{self.var} . {self.expr}"
 
 
 class Application(Term):
@@ -36,13 +35,20 @@ class Application(Term):
         self.argument = argument
 
     def evaluate(self):
-        pass
+        eval_function = self.function.evaluate()
+        eval_arg = self.argument.evaluate()
 
-    def apply(self):
-        pass
+        if type(eval_function) is Abstraction:
+            var = eval_function.var
+            expr = eval_function.expr
+            res = substitute(expr, var, eval_arg)
+        else:
+            res = Application(eval_function, eval_arg)
+
+        return res
 
     def __repr__(self) -> str:
-        return f"({self.function}{self.argument})"
+        return f"{self.function} {self.argument}"
 
 
 # TODO: move to Term class? kinda hard since need to return self instance.
@@ -112,3 +118,16 @@ def find_fresh_fv(vars: set[Variable]) -> Variable:
     for i in range(length + 1):
         if i not in indices:
             return Variable(i)
+
+
+if __name__ == "__main__":
+    x = Variable(1)
+    y = Variable(2)
+    z = Variable(3)
+    xy = Application(x, y)
+    f = Abstraction(y, xy)
+    g = Abstraction(x, f)
+    h = Abstraction(z, z)
+    res = Application(g, h)
+    print(res)
+    print(res.evaluate())
