@@ -25,6 +25,7 @@ The `Term` class implements operations common to all lambda terms, such as appli
 
 # TODOs
 
+- [ ] consolidate class methods in `Term` class -- introspection
 - [ ] build CLI
 - [ ] implement parser
 - [ ] pretty print expressions
