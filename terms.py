@@ -1,6 +1,11 @@
 # TODO: use introspection to move methods to Term class
 class Term:
-    pass
+    def normal_form(self):
+        term = self
+        while type(term) is Application and type(term.function) is Abstraction:
+            term = term.evaluate()
+
+        return term
 
 
 class Variable(Term):
@@ -26,7 +31,7 @@ class Abstraction(Term):
         return self
 
     def __repr__(self) -> str:
-        return f"λ{self.var} . {self.expr}"
+        return f"(λ{self.var} . {self.expr})"
 
 
 class Application(Term):
@@ -48,7 +53,7 @@ class Application(Term):
         return res
 
     def __repr__(self) -> str:
-        return f"{self.function} {self.argument}"
+        return f"({self.function} {self.argument})"
 
 
 # TODO: move to Term class? kinda hard since need to return self instance.
@@ -118,16 +123,3 @@ def find_fresh_fv(vars: set[Variable]) -> Variable:
     for i in range(length + 1):
         if i not in indices:
             return Variable(i)
-
-
-if __name__ == "__main__":
-    x = Variable(1)
-    y = Variable(2)
-    z = Variable(3)
-    xy = Application(x, y)
-    f = Abstraction(y, xy)
-    g = Abstraction(x, f)
-    h = Abstraction(z, z)
-    res = Application(g, h)
-    print(res)
-    print(res.evaluate())
