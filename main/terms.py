@@ -12,11 +12,8 @@ class Variable(Term):
     def __init__(self, name: int):
         self.name = name
 
-    def evaluate(self) -> int:
-        return self
-
-    def apply(self, y: Term):
-        pass
+    # def evaluate(self) -> int:
+    #     return self
 
     def __repr__(self) -> str:
         return f"v_{self.name}"
@@ -27,8 +24,8 @@ class Abstraction(Term):
         self.var = var
         self.expr = expr
 
-    def evaluate(self):
-        return self
+    # def evaluate(self):
+    #     return self
 
     def __repr__(self) -> str:
         return f"(λ{self.var} . {self.expr})"
@@ -39,18 +36,18 @@ class Application(Term):
         self.function = function
         self.argument = argument
 
-    def evaluate(self):
-        eval_function = self.function.evaluate()
-        eval_arg = self.argument.evaluate()
-
-        if type(eval_function) is Abstraction:
-            var = eval_function.var
-            expr = eval_function.expr
-            res = substitute(expr, var, eval_arg)
-        else:
-            res = Application(eval_function, eval_arg)
-
-        return res
+    # def evaluate(self):
+    #     eval_function = self.function.evaluate()
+    #     eval_arg = self.argument.evaluate()
+    #
+    #     if type(eval_function) is Abstraction:
+    #         var = eval_function.var
+    #         expr = eval_function.expr
+    #         res = substitute(expr, var, eval_arg)
+    #     else:
+    #         res = Application(eval_function, eval_arg)
+    #
+    #     return res
 
     def __repr__(self) -> str:
         return f"({self.function} {self.argument})"
