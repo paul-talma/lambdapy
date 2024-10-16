@@ -24,21 +24,21 @@ class Token:
 
 
 class Lexer:
-    def __init__(self, text):
-        self.text = text
+    def __init__(self, input):
+        self.input = input
         self.pos = 0
-        self.max_len = len(text)
-        self.char = text[0]
+        self.max_len = len(input)
+        self.char = input[0]
 
     def advance(self):
         self.pos += 1
         if self.pos < self.max_len:
-            self.ch = self.text[self.pos]
+            self.char = self.input[self.pos]
         else:
-            self.ch = None
+            self.char = None
 
     def skip_spaces(self):
-        while self.ch is not None and self.ch.isspace():
+        while self.char is not None and self.char.isspace():
             self.advance()
 
     def error(self):
