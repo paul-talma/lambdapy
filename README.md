@@ -35,6 +35,7 @@ The `Term` class implements operations common to all lambda terms, such as appli
 
 ## Parser
 
+- [ ] allow syntactic sugar wrt. parentheses
 - [ ] separate AST and evaluation
 
 ## CLI
