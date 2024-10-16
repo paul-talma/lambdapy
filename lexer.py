@@ -41,15 +41,15 @@ class Lexer:
         while self.ch is not None and self.ch.isspace():
             self.advance()
 
-    # TODO: don't think we need this
-    def peek(self):
-        if self.pos + 1 < self.max_len:
-            return self.text[self.pos + 1]
-        else:
-            return None
-
     def error(self):
         raise Exception("Lexer error.")
+
+    def get_var(self):
+        var_name = ""
+        while self.char is not None and self.char.isalnum():
+            var_name += self.char
+            self.advance()
+        return Token(TokenTypes.VAR, var_name)
 
     def get_token(self):
         if self.pos >= self.max_len:
@@ -76,5 +76,5 @@ class Lexer:
             return Token(TokenTypes.DOT, ".")
 
         if self.char.isalpha():
-            self.advance()
-            return Token(TokenTypes.LPAR, "(")
+            token = self.get_var()
+            return token
