@@ -25,7 +25,18 @@ The `Term` class implements operations common to all lambda terms, such as appli
 
 # TODOs
 
-- [ ] consolidate class methods in `Term` class -- introspection
-- [ ] build CLI
-- [ ] implement parser
+## Terms
+
 - [ ] pretty print expressions
+
+## Lexer
+
+- [ ] allow "lambda" and "\\" for variable binding
+
+## Parser
+
+- [ ] separate AST and evaluation
+
+## CLI
+
+- [ ] build CLI
