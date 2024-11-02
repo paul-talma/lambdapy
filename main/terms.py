@@ -1,4 +1,6 @@
-# TODO: use introspection to move methods to Term class
+# these classes define the nodes in the AST
+
+
 class Term:
     def normal_form(self):
         term = self
@@ -23,9 +25,6 @@ class Abstraction(Term):
     def __init__(self, var: Variable, expr: Term):
         self.var = var
         self.expr = expr
-
-    # def evaluate(self):
-    #     return self
 
     def __repr__(self) -> str:
         return f"(λ{self.var} . {self.expr})"
@@ -53,7 +52,6 @@ class Application(Term):
         return f"({self.function} {self.argument})"
 
 
-# TODO: move to Term class? kinda hard since need to return self instance.
 def substitute(formula: Term, x: Variable, term: Term) -> Term:
     """
     recursively substitute term for x in formula
