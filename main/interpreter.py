@@ -107,7 +107,7 @@ class Interpreter(NodeVisitor):
             var = func.var
             expr = func.expr
             arg = application.argument
-            # arg = self.visit(application.argument)
             res = substitute(expr, var, arg)
             res = self.visit(res)
             return res
+        return application
