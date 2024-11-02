@@ -12,7 +12,7 @@ Our implementation provides an interface for the user to enter a lambda expressi
 The string is then parsed into a lambda expression and evaluated.
 The result is returned to the user.
 
-The _terms_ of the lambda calculus ("lambda terms")are recursively defined by the following Backus-Naur grammar:
+The _terms_ of the lambda calculus ("lambda terms") are recursively defined by the following Backus-Naur grammar:
 
 $$
 \begin{align*}
