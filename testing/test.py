@@ -8,14 +8,20 @@ if __name__ == "__main__":
     print("Hello, Alonzo. Your computer is ready.")
     print("Reading input ... ")
 
-    input = open("testing/input.txt", "r").read()
+    # input = open("testing/input.txt", "r").read()
+    with open("testing/input.txt", "r") as fid:
+        lines = fid.readlines()
+        lines = [line.strip() for line in lines]
 
-    lexer = Lexer(input)
-    parser = Parser(lexer)
+    for line in lines:
+        print("_________________")
+        print("Currently computing: ", line)
+        lexer = Lexer(line)
+        parser = Parser(lexer)
 
-    tree = parser.parse()
+        tree = parser.parse()
 
-    interpreter = Interpreter(tree)
-    res = interpreter.interpret()
+        interpreter = Interpreter(tree)
+        res = interpreter.interpret()
 
-    print(res)
+        print("Result: ", res)
