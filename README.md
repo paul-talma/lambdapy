@@ -31,7 +31,7 @@ Lambda terms are read from a text file by the `Lexer` class, which the parser us
 Evaluating lambda terms turned out to be non-trivial.
 The naive solution is to traverse the AST of a lambda term, recursively evaluating expressions.
 However, this strategy does not yield the desired behavior on lambda terms with no normal form.
-A lambda term is in _normal form_ if it cannot be $beta$-reduced any further.
+A lambda term is in _normal form_ if it cannot be $\beta$-reduced any further.
 $\beta$-reduction allows one to repace expressions of the form $(\lambda x.M)N$ by ones of the form $M[x := N]$ (this denotes the substitution of $N$ for $x$ in $M$).
 For example, the term $(\lambda x.xy)z$ $\beta$-reduces to $zy$, which is in normal form.
 By contrast, $\Omega := (\lambda x . xx)(\lambda x. xx)$ does not have a normal form, as can be seen by the fact that applying $\beta$-reduction to it yields $\Omega$ again.
