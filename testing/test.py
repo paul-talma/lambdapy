@@ -1,5 +1,6 @@
 from main.lexer import Lexer
 from main.parser import Parser
+from main.interpreter import Interpreter
 
 
 if __name__ == "__main__":
@@ -13,5 +14,8 @@ if __name__ == "__main__":
     parser = Parser(lexer)
 
     tree = parser.parse()
-    print(tree)
-    print(tree.var, tree.expr)
+
+    interpreter = Interpreter(tree)
+    res = interpreter.interpret()
+
+    print(res)
