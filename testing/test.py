@@ -8,7 +8,6 @@ if __name__ == "__main__":
     print("Hello, Alonzo. Your computer is ready.")
     print("Reading input ... ")
 
-    # input = open("testing/input.txt", "r").read()
     with open("testing/input.txt", "r") as fid:
         lines = fid.readlines()
         lines = [line.strip() for line in lines]
