@@ -17,7 +17,7 @@ class Variable(Term):
         return term if self.name == x.name else self
 
     def __repr__(self) -> str:
-        return f"v_{self.name}"
+        return f"x_{self.name}"
 
 
 class Abstraction(Term):
