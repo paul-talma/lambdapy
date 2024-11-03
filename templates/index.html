@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lambda Calculus Interpreter</title>
+</head>
+<body>
+    <h1>Lambda Calculus Interpreter</h1>
+    <form action="/evaluate" method="post">
+        <label for="expression">Enter Lambda Expression:</label>
+        <input type="text" id="expression" name="expression" required>
+        <button type="submit">Evaluate</button>
+    </form>
+    <div id="result">
+        {{ result|safe }}
+    </div>
+</body>
+</html>
