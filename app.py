@@ -6,14 +6,14 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("index.html", result=None)
 
 
 @app.route("/evaluate", methods=["POST"])
 def evaluate():
     expression = request.form["expression"]
     result = interpret(expression)
-    return result
+    return render_template("index.html", result=result)
 
 
 if __name__ == "__main__":
