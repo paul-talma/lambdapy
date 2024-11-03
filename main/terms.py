@@ -2,6 +2,9 @@
 
 
 class Term:
+    def __repr__(self) -> str:
+        pass
+
     def substitute():
         pass
 

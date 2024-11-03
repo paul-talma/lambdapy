@@ -1,4 +1,4 @@
-from main.terms import Abstraction, Application, Variable, Term
+from main.terms import Abstraction
 
 
 class NodeVisitor:
