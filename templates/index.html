@@ -68,14 +68,23 @@
             background-color: #45a049;
         }
 
-        #result {
+        #history {
             margin-top: 20px;
-            padding: 15px;
+            text-align: left;
+        }
+
+        .history-item {
+            padding: 10px;
+            margin-bottom: 10px;
             border: 1px solid #ddd;
             border-radius: 4px;
             background-color: #f9f9f9;
-            font-size: 16px;
-            color: #555;
+        }
+
+        .history-item strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
         }
     </style>
 </head>
@@ -87,8 +96,15 @@
             <input type="text" id="expression" name="expression" placeholder="Example: λx.λy.(x y)" required>
             <button type="submit">Evaluate</button>
         </form>
-        <div id="result">
-            {{ result|safe }}
+
+        <div id="history">
+            <h2>History</h2>
+            {% for item in history %}
+                <div class="history-item">
+                    <strong>Expression:</strong> {{ item.expression }}<br>
+                    <strong>Result:</strong> {{ item.result }}
+                </div>
+            {% endfor %}
         </div>
     </div>
 </body>
