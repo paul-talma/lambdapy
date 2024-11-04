@@ -24,7 +24,10 @@ class Interpreter(NodeVisitor):
         return variable
 
     def visit_Abstraction(self, abstraction):
-        return abstraction
+        var = self.visit(abstraction.var)
+        expr = self.visit(abstraction.expr)
+        res = Abstraction(var, expr)
+        return res
 
     def visit_Application(self, application):
         func = application.function

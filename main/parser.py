@@ -49,7 +49,7 @@ class Parser:
         return Variable(num)
 
     # WARN: this solution is unstable
-    # WARN: does not account for different prefixes e.g. x1 != y1
+    # WARN: does not account for different prefixes e.g. x1 vs. y1
     def extract_num(self, var_token):
         val = var_token.value
         return int(val[1:])
