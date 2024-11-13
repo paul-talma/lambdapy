@@ -5,11 +5,13 @@ class LatexTranspiler(NodeVisitor):
     def __init__(self, tree):
         self.tree = tree
 
-    def interpret(self):
+    def transpile(self):
         if self.tree is None:
             return ""
 
-        return self.visit(self.tree)
+        latex_expression = self.visit(self.tree)
+        latex_expression = "$" + latex_expression + "$"
+        return latex_expression
 
     def visit_Variable(self, variable):
         latex_var = "x_{" + str(variable.name) + "}"
