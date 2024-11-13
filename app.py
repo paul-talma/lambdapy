@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template, redirect, url_for, session
-from main.run import interpret
+from main.run import parse, interpret, transpile
 
 app = Flask(__name__)
 app.secret_key = "secretsecret"
@@ -19,9 +19,20 @@ def index():
 @app.route("/evaluate", methods=["POST"])
 def evaluate():
     expression = request.form["expression"]
-    result = interpret(expression)
+    input_tree = parse(expression)  # generate input tree
+    latex_input = transpile(input_tree)  #  generate latex code for input representation
+    output_tree = interpret(input_tree)  # interpret expression
+    latex_output = transpile(
+        output_tree
+    )  # generate latex code for output representation
 
-    session["history"].append({"expression": expression, "result": result})
+    session["history"].append(
+        {
+            "expression": expression,
+            "latex_input": latex_input,
+            "latex_output": latex_output,
+        }
+    )
     session.modified = True
 
     return redirect(url_for("index"))
