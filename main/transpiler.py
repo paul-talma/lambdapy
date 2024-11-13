@@ -10,7 +10,6 @@ class LatexTranspiler(NodeVisitor):
             return ""
 
         latex_expression = self.visit(self.tree)
-        latex_expression = "$" + latex_expression + "$"
         return latex_expression
 
     def visit_Variable(self, variable):
