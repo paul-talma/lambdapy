@@ -4,7 +4,29 @@ An implementation of the lambda calculus in python.
 
 # Project structure
 
-TODO: add project tree here
+Working project tree:
+
+```
+.
+├── LICENSE
+├── README.md
+├── app.py
+├── main
+│   ├── __init__.py
+│   ├── grammar.txt
+│   ├── interpreter.py
+│   ├── lexer.py
+│   ├── parser.py
+│   ├── run.py
+│   ├── terms.py
+│   └── transpiler.py
+├── templates
+│   └── index.html
+└── testing
+    ├── __init__.py
+    ├── input.txt
+    └── test.py
+```
 
 # Implementation details
 
@@ -42,22 +64,19 @@ This maneuver is implemented in the `visit_Application` function.
 
 # TODOs
 
-## Terms
-
-- [ ] pretty print expressions
-
 ## Lexer
 
-- [ ] allow "lambda" and "\\" for variable binding
+- [ ] allow both "lambda" and "\\" for variable binding
 
 ## Parser
 
 - [ ] allow syntactic sugar wrt. parentheses
 
-## Interpreter
-
-- [ ] refactor substitution function: each term gets its own
-
 ## CLI
 
 - [ ] build CLI
+
+## Extensions
+
+- [ ] add primitives (numerical expressions, arithmetic functions)
+- [ ] add type structure

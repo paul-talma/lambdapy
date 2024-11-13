@@ -30,11 +30,11 @@ class Interpreter(NodeVisitor):
         return res
 
     def visit_Application(self, application):
-        func = application.function
+        func = application.func
         if type(func) is Abstraction:
             var = func.var
             expr = func.expr
-            arg = application.argument
+            arg = application.arg
             res = expr.substitute(var, arg)
             res = self.visit(res)
             return res
