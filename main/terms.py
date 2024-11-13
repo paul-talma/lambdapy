@@ -53,17 +53,17 @@ class Abstraction(Term):
 
 class Application(Term):
     def __init__(self, function: Term, argument: Term):
-        self.function = function
-        self.argument = argument
+        self.func = function
+        self.arg = argument
 
     def substitute(self, x: Variable, term: Term):
-        new_func = self.function.substitute(x, term)
-        new_arg = self.argument.substitute(x, term)
+        new_func = self.func.substitute(x, term)
+        new_arg = self.arg.substitute(x, term)
         res = Application(new_func, new_arg)
         return res
 
     def __repr__(self) -> str:
-        return f"({self.function} {self.argument})"
+        return f"({self.func} {self.arg})"
 
 
 def free_variables(expr: Term) -> set[Variable]:
