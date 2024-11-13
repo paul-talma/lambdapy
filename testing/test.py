@@ -1,6 +1,7 @@
 from main.lexer import Lexer
 from main.parser import Parser
 from main.interpreter import Interpreter
+from main.transpiler import LatexTranspiler
 
 
 if __name__ == "__main__":
@@ -21,6 +22,13 @@ if __name__ == "__main__":
         tree = parser.parse()
 
         interpreter = Interpreter(tree)
-        res = interpreter.interpret()
+        input_transpiler = LatexTranspiler(tree)
+        input_latex = input_transpiler.transpile()
 
+        res = interpreter.interpret()
+        output_transpiler = LatexTranspiler(res)
+        output_latex = output_transpiler.transpile()
+
+        print("Input (Latex): ", input_latex)
         print("Result: ", res)
+        print("Result (latex): ", output_latex)
