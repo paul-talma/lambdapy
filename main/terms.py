@@ -5,7 +5,7 @@ class Term:
     def __repr__(self) -> str:
         pass
 
-    def substitute():
+    def substitute(self, term1, term2):
         pass
 
 
@@ -25,9 +25,9 @@ class Abstraction(Term):
         self.var = var
         self.expr = expr
 
-    def subsitute(self, x: Variable, term: Term) -> Term:
+    def substitute(self, x: Variable, term: Term) -> Term:
         # x is bound
-        if x.name == self.name:
+        if x.name == self.var.name:
             return self
 
         # x is in FV(self) and var is in FV(term)
@@ -66,19 +66,28 @@ class Application(Term):
         return f"({self.func} {self.arg})"
 
 
-def free_variables(expr: Term) -> set[Variable]:
+def free_variables(term: Term) -> set[Variable]:
     """
     recursively compute the free variables of expr
     """
-    if type(expr) is Variable:
-        return {expr}
+    if type(term) is Variable:
+        return {term}
 
-    if type(expr) is Abstraction:
-        var = expr.var
-        expr = expr.expr
+    if type(term) is Abstraction:
+        var = term.var
+        expr = term.expr
         free_vars = free_variables(expr)
         if var in free_vars:
             free_vars.remove(var)
+
+        return free_vars
+
+    # term is application
+    func = term.func
+    arg = term.arg
+    func_vars = free_variables(func)
+    arg_vars = free_variables(arg)
+    return func_vars.union(arg_vars)
 
 
 def find_fresh_fv(vars: set[Variable]) -> Variable:
