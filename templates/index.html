@@ -160,6 +160,19 @@
 			line-height: 1.6;
 			color: #666;
 		}
+
+		code,
+		tt {
+			font-family: monospace;
+			font-size: 1em;
+			/* Optional: set font size to match surrounding text */
+			background-color: #f4f4f4;
+			/* Optional: add background color for clarity */
+			padding: 2px 4px;
+			/* Optional: add padding to make it stand out */
+			border-radius: 4px;
+			/* Optional: rounded corners */
+		}
 	</style>
 </head>
 
@@ -172,12 +185,17 @@
 		<div class="section">
 			<h2>The Lambda Calculus</h2>
 			<p>
-				The (untyped) lambda calculus is the world's simplest Turing-complete programming language. It was discovered
-				by Alonzo Church in 1936 as part of his investigations into the foundations of mathematics and the nature of
-				computation. Despite its simple syntax (the language has only three basic kinds of expressions), it is
-				maximally expressive: any function that can be computed by (say) a Python program can be computed by a
+				The <a href="https://plato.stanford.edu/entries/lambda-calculus/">lambda calculus</a> is arguably the world's
+				simplest programming language.
+				It was discovered
+				by <a href="https://plato.stanford.edu/entries/church/index.html">Alonzo Church</a> in 1936 as part of his
+				investigations into the foundations of mathematics and the nature of
+				computation. Despite its simple syntax (the language has only three kinds of expressions), it is
+				<a href="https://en.wikipedia.org/wiki/Turing_completeness">maximally expressive</a>: any function that can be
+				computed by (say) a Python program can be represented by a
 				lambda-expression. Due to its expressive completeness and flexibility, the lambda calculus has played a
-				central role in the development of modern programming languages, especially of the functional sort. The
+				central role in the development of modern programming languages, especially of the <a
+					href="https://en.wikipedia.org/wiki/Functional_programming">functional sort</a>. The
 				formalism and its many extensions continue to inspire researchers and programmers alike.
 			</p>
 		</div>
@@ -188,17 +206,12 @@
 				The lambda calculus models computation as <em>function abstraction</em> and <em>function application</em>.
 				Writing a program in the lambda calculus consists of constructing lambda terms to serve as functions and
 				arguments, and applying functions to arguments (thereby producing another lambda term). The basic terms are
-				<em>variables</em>, written <CODE>x1</CODE>, <CODE>x2<CODE>, etc. Given a lambda term <CODE>M</CODE>, we can
-						construct a
-						function by <em>abstracting</em> from the term. We write this <CODE>x &lt i &gt . M</CODE>, where
-						<CODE>i<CODE> is a
-								natural number. Intuitively, this represents a function of one argument. Finally, given two
-								lambda-terms
-								<CODE>M</CODE> and <CODE>N<CODE>, we can <em>apply</em> <CODE>M</CODE> to <CODE>N</CODE>. Intuitively,
-										this denotes the
-										result of applying the function denoted by <CODE>M</CODE> to the function denoted by
-										<CODE>N<CODE>, and we write this
-												<CODE>(M N)</CODE>.
+				<em>variables</em>, written <code>x1</code>, <code>x2</code>, etc. Given a lambda term <code>M</code>, we can
+				construct a function by <em>abstracting</em> from the term. We write this <code>x&lti&gt . M</code>, where
+				<code>i</code> is a natural number. Intuitively, this represents a function of one argument. Finally, given two
+				lambda-terms <code>M</code> and <code>N</code>, we can <em>apply</em> <code>M</code> to <code>N</code>.
+				Intuitively, this denotes the result of applying the function denoted by <code>M</code> to the function denoted
+				by <code>N</code>, and we write this <code>(M N)</code>.
 			</p>
 			<p>
 				Try it below! Enter an expression following the above syntactical rules and run the computation using
@@ -211,7 +224,7 @@
 			<div class="form-section">
 				<form action="/evaluate" method="post">
 					<label for="expression">Enter Lambda Expression</label>
-					<input type="text" id="expression" name="expression" placeholder="Example: (\x_1 . x_1 x_2)" required>
+					<input type="text" id="expression" name="expression" placeholder="Example: (\x1 . x1 x2)" required>
 					<button type="submit">Evaluate</button>
 				</form>
 			</div>
@@ -222,8 +235,8 @@
 					<h2>Recent expressions</h2>
 					{% for item in history %}
 					<div class="history-item">
-						<strong>Expression:</strong> \[ {{ item.latex_input | safe }} \]
-						<strong>Evaluation:</strong> \[ {{ item.latex_output | safe }} \]
+						<strong>This expression</strong> \[ {{ item.latex_input | safe }} \]
+						<strong>evaluates to</strong> \[ {{ item.latex_output | safe }} \]
 					</div>
 					{% endfor %}
 				</div>
@@ -232,5 +245,19 @@
 					<button type="submit" class="clear-button">Clear history</button>
 				</form>
 			</div>
+		</div>
+		<div>
+			<h2>Information</h2>
+			<p style="margin-bottom:2rem">
+				Made by <a href="https://github.com/paul-talma">Paul Talma</a>. My implementation of
+				the parser and interpreter
+				was inspired by <a href="https://ruslanspivak.com/">Ruslan Spivak's</a> <a
+					href="https://ruslanspivak.com/lsbasi-part1/">"Let's
+					Build a Simple Interpreter"</a>.
+			</p>
+			<p style="margin-bottom:2rem">
+				<a href="https://github.com/paul-talma/lambdapy/tree/main">Github.</a>
+			</p>
+
 		</div>
 	</div>
