@@ -4,7 +4,7 @@ from main.interpreter import Interpreter
 from main.transpiler import LatexTranspiler
 
 
-if __name__ == "__main__":
+def test():
     print("=" * 41)
     print("Hello, Alonzo. Your computer is ready.")
     print("Reading input ... ")
