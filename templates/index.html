@@ -16,7 +16,6 @@
 	<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" crossorigin="anonymous"></script>
 	<title>LambdaPy</title>
 	<style>
-		/* Basic reset */
 		* {
 			margin: 0;
 			padding: 0;
@@ -161,17 +160,17 @@
 			color: #666;
 		}
 
+		ul {
+			padding-left: 3em;
+		}
+
 		code,
 		tt {
 			font-family: monospace;
 			font-size: 1em;
-			/* Optional: set font size to match surrounding text */
-			background-color: #f4f4f4;
-			/* Optional: add background color for clarity */
+			background-color: #d3d3d3;
 			padding: 2px 4px;
-			/* Optional: add padding to make it stand out */
 			border-radius: 4px;
-			/* Optional: rounded corners */
 		}
 	</style>
 </head>
@@ -208,7 +207,8 @@
 				arguments, and applying functions to arguments (thereby producing another lambda term). The basic terms are
 				<em>variables</em>, written <code>x1</code>, <code>x2</code>, etc. Given a lambda term <code>M</code>, we can
 				construct a function by <em>abstracting</em> from the term. We write this <code>\xi . M</code>, where
-				<code>i</code> is a natural number. Intuitively, this represents a function of one argument. Finally, given two
+				<code>i</code> is a natural number. Intuitively, this represents a function of one argument, <code>xi</code>.
+				Finally, given two
 				lambda-terms <code>M</code> and <code>N</code>, we can <em>apply</em> <code>M</code> to <code>N</code>.
 				Intuitively, this denotes the result of applying the function denoted by <code>M</code> to the function denoted
 				by <code>N</code>, and we write this <code>(M N)</code>.
@@ -231,7 +231,8 @@
 			</ul>
 			</p>
 			<p>
-				See if you can crash the server with a cleverly crafted lambda term, whose evaluation doesn't terminate ;)
+				See if you can crash the server with a cleverly crafted lambda term (hint: think of your program as an infinite
+				binary tree) ;)
 			</p>
 		</div>
 
