@@ -168,41 +168,45 @@
 	<div class="container">
 		<h1>LambdaPy:</h1>
 		<h2 class="subtitle">An interpreter for the Lambda Calculus, written in Python</h2>
+
+		<div class="section">
+			<h2>The Lambda Calculus</h2>
+			<p>
+				The (untyped) lambda calculus is the world's simplest Turing-complete programming language. It was discovered
+				by Alonzo Church in 1936 as part of his investigations into the foundations of mathematics and the nature of
+				computation. Despite its simple syntax (the language has only three basic kinds of expressions), it is
+				maximally expressive: any function that can be computed by (say) a Python program can be computed by a
+				lambda-expression. Due to its expressive completeness and flexibility, the lambda calculus has played a
+				central role in the development of modern programming languages, especially of the functional sort. The
+				formalism and its many extensions continue to inspire researchers and programmers alike.
+			</p>
+		</div>
+
+		<div class="section">
+			<h2>How to use this app</h2>
+			<p>
+				The lambda calculus models computation as <em>function abstraction</em> and <em>function application</em>.
+				Writing a program in the lambda calculus consists of constructing lambda terms to serve as functions and
+				arguments, and applying functions to arguments (thereby producing another lambda term). The basic terms are
+				<em>variables</em>, written <CODE>x1</CODE>, <CODE>x2<CODE>, etc. Given a lambda term <CODE>M</CODE>, we can
+						construct a
+						function by <em>abstracting</em> from the term. We write this <CODE>x &lt i &gt . M</CODE>, where
+						<CODE>i<CODE> is a
+								natural number. Intuitively, this represents a function of one argument. Finally, given two
+								lambda-terms
+								<CODE>M</CODE> and <CODE>N<CODE>, we can <em>apply</em> <CODE>M</CODE> to <CODE>N</CODE>. Intuitively,
+										this denotes the
+										result of applying the function denoted by <CODE>M</CODE> to the function denoted by
+										<CODE>N<CODE>, and we write this
+												<CODE>(M N)</CODE>.
+			</p>
+			<p>
+				Try it below! Enter an expression following the above syntactical rules and run the computation using
+				"Evaluate." Don't forget parentheses around (and only around) function applications.
+			</p>
+		</div>
+
 		<div class="content">
-
-
-			<div class="section">
-				<h2>The Lambda Calculus</h2>
-				<p>
-					The (untyped) lambda calculus is the world's simplest Turing-complete programming language. It was discovered
-					by Alonzo Church in 1936 as part of his investigations into the foundations of mathematics and the nature of
-					computation. Despite its simple syntax (the language has only three basic kinds of expressions), it is
-					maximally expressive: any function that can be computed by (say) a Python program can be computed by a
-					lambda-expression. Due to its expressive completeness and flexibility, the lambda calculus has played a
-					central role in the development of modern programming languages, especially of the functional sort. The
-					formalism and its many extensions continue to inspire researchers and programmers alike.
-				</p>
-			</div>
-
-			<div class="section">
-				<h2>How to use this app</h2>
-				<p>
-					The lambda calculus models computation as <em>function abstraction</em> and <em>function application</em>.
-					Writing a program in the lambda calculus consists of constructing lambda terms to serve as functions and
-					arguments, and applying functions to arguments (thereby producing another lambda term). The basic terms are
-					<em>variables</em>, written <tt>x1</tt>, <tt>x2</tt>, etc. Given a lambda term <tt>M</tt>, we can construct a
-					function by <em>abstracting</em> from the term. We write this <tt>\x\<i\> . M</tt>, where <tt>i</tt> is a
-					natural number. Intuitively, this represents a function of one argument. Finally, given two lambda-terms
-					<tt>M</tt> and <tt>N</tt>, we can <em>apply</em> <tt>M</tt> to <tt>N</tt>. Intuitively, this denotes the
-					result of applying the function denoted by <tt>M</tt> to the function denoted by <tt>N</tt>, and we write this
-					<tt>(M N)</tt>.
-				</p>
-				<p>
-					Try it below! Enter an expression following the above syntactical rules and run the computation using
-					"Evaluate." Don't forget parentheses around (and only around) function applications.
-				</p>
-			</div>
-
 			<!-- Form Section -->
 			<div class="form-section">
 				<form action="/evaluate" method="post">
