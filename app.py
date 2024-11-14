@@ -20,7 +20,7 @@ def index():
 def evaluate():
     expression = request.form["expression"]
     input_tree = parse(expression)  # generate input tree
-    latex_input = transpile(input_tree)  #  generate latex code for input representation
+    latex_input = transpile(input_tree)  # generate latex code for input representation
     output_tree = interpret(input_tree)  # interpret expression
     latex_output = transpile(
         output_tree
@@ -35,7 +35,6 @@ def evaluate():
     session["history"].append(result)
     session.modified = True
 
-    return redirect(url_for("index"))
     return redirect(url_for("index"))
 
 
