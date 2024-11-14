@@ -36,7 +36,7 @@
 		.container {
 			background: #ffffff;
 			padding: 30px;
-			max-width: 800px;
+			max-width: 900px;
 			width: 100%;
 			border-radius: 0 4px 8px rgba(0, 0, 0, 0.1);
 		}
@@ -179,7 +179,7 @@
 <body>
 	<!-- Header Section -->
 	<div class="container">
-		<h1>LambdaPy:</h1>
+		<h1>LambdaPy</h1>
 		<h2 class="subtitle">An interpreter for the Lambda Calculus, written in Python</h2>
 
 		<div class="section">
@@ -202,20 +202,36 @@
 
 		<div class="section">
 			<h2>How to use this app</h2>
-			<p>
+			<p style="margin-bottom:2rem">
 				The lambda calculus models computation as <em>function abstraction</em> and <em>function application</em>.
 				Writing a program in the lambda calculus consists of constructing lambda terms to serve as functions and
 				arguments, and applying functions to arguments (thereby producing another lambda term). The basic terms are
 				<em>variables</em>, written <code>x1</code>, <code>x2</code>, etc. Given a lambda term <code>M</code>, we can
-				construct a function by <em>abstracting</em> from the term. We write this <code>&\x&lti&gt . M</code>, where
+				construct a function by <em>abstracting</em> from the term. We write this <code>\xi . M</code>, where
 				<code>i</code> is a natural number. Intuitively, this represents a function of one argument. Finally, given two
 				lambda-terms <code>M</code> and <code>N</code>, we can <em>apply</em> <code>M</code> to <code>N</code>.
 				Intuitively, this denotes the result of applying the function denoted by <code>M</code> to the function denoted
 				by <code>N</code>, and we write this <code>(M N)</code>.
+
+				Lambda expressions are evaluated by applying beta-reduction. This rule allows you to convert a lambda term of
+				the form <code>(\ xi . M N)</code> into one of the form <code>M[xi := N]</code>, where this latter expression
+				denotes the result of replacing each occurrence of <code>xi</code> in <code>M</code> with <code>N</code>. To
+				evaluate a lambda term, we recursively apply the beta-reduction rule. If this procedure terminates, the result
+				is unique, and represents the output of the computation.
 			</p>
-			<p>
+			<p style="margin-bottom:2rem">
 				Try it below! Enter an expression following the above syntactical rules and run the computation using
 				"Evaluate." Don't forget parentheses around (and only around) function applications.
+			</p>
+			<p>
+				Here are a couple of lambda terms to get you started:
+			<ul>
+				<li><code>(\x1 . \x2 . (x2 x1) x3)</code></li>
+				<li><code>(\x1 . (x1 x1) x1)</code></li>
+			</ul>
+			</p>
+			<p>
+				See if you can crash the server with a cleverly crafted lambda term, whose evaluation doesn't terminate ;)
 			</p>
 		</div>
 

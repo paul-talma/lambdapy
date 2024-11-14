@@ -26,15 +26,16 @@ def evaluate():
         output_tree
     )  # generate latex code for output representation
 
-    session["history"].append(
-        {
-            "expression": expression,
-            "latex_input": latex_input,
-            "latex_output": latex_output,
-        }
-    )
+    result = {
+        "expression": expression,
+        "latex_input": latex_input,
+        "latex_output": latex_output,
+    }
+
+    session["history"].append(result)
     session.modified = True
 
+    return redirect(url_for("index"))
     return redirect(url_for("index"))
 
 
