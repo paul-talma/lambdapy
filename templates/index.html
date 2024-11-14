@@ -16,7 +16,6 @@
 	<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" crossorigin="anonymous"></script>
 	<title>LambdaPy</title>
 	<style>
-		/* Basic reset */
 		* {
 			margin: 0;
 			padding: 0;
@@ -36,7 +35,7 @@
 		.container {
 			background: #ffffff;
 			padding: 30px;
-			max-width: 800px;
+			max-width: 900px;
 			width: 100%;
 			border-radius: 0 4px 8px rgba(0, 0, 0, 0.1);
 		}
@@ -161,17 +160,17 @@
 			color: #666;
 		}
 
+		ul {
+			padding-left: 3em;
+		}
+
 		code,
 		tt {
 			font-family: monospace;
 			font-size: 1em;
-			/* Optional: set font size to match surrounding text */
-			background-color: #f4f4f4;
-			/* Optional: add background color for clarity */
+			background-color: #d3d3d3;
 			padding: 2px 4px;
-			/* Optional: add padding to make it stand out */
 			border-radius: 4px;
-			/* Optional: rounded corners */
 		}
 	</style>
 </head>
@@ -179,7 +178,7 @@
 <body>
 	<!-- Header Section -->
 	<div class="container">
-		<h1>LambdaPy:</h1>
+		<h1>LambdaPy</h1>
 		<h2 class="subtitle">An interpreter for the Lambda Calculus, written in Python</h2>
 
 		<div class="section">
@@ -187,16 +186,16 @@
 			<p>
 				The <a href="https://plato.stanford.edu/entries/lambda-calculus/">lambda calculus</a> is arguably the world's
 				simplest programming language.
-				It was discovered
-				by <a href="https://plato.stanford.edu/entries/church/index.html">Alonzo Church</a> in 1936 as part of his
-				investigations into the foundations of mathematics and the nature of
-				computation. Despite its simple syntax (the language has only three kinds of expressions), it is
-				<a href="https://en.wikipedia.org/wiki/Turing_completeness">maximally expressive</a>: any function that can be
-				computed by (say) a Python program can be represented by a
-				lambda-expression. Due to its expressive completeness and flexibility, the lambda calculus has played a
-				central role in the development of modern programming languages, especially of the <a
-					href="https://en.wikipedia.org/wiki/Functional_programming">functional sort</a>. The
-				formalism and its many extensions continue to inspire researchers and programmers alike.
+				It was discovered by <a href="https://plato.stanford.edu/entries/church/index.html">Alonzo Church</a> in 1936 as
+				part of his investigations into the foundations of mathematics and the nature of
+				computation.
+				Despite its simple syntax (the language has only three kinds of expressions), it is <a
+					href="https://en.wikipedia.org/wiki/Turing_completeness">maximally expressive</a>: any function that can be
+				computed by (say) a Python program can be represented by a lambda-expression.
+				Due to its expressive completeness and flexibility, the lambda calculus has played a central role in the
+				development of modern programming languages, especially of the <a
+					href="https://en.wikipedia.org/wiki/Functional_programming">functional sort</a>.
+				The formalism and its many extensions continue to inspire researchers and programmers alike.
 			</p>
 		</div>
 
@@ -208,7 +207,8 @@
 				arguments, and applying functions to arguments (thereby producing another lambda term). The basic terms are
 				<em>variables</em>, written <code>x1</code>, <code>x2</code>, etc. Given a lambda term <code>M</code>, we can
 				construct a function by <em>abstracting</em> from the term. We write this <code>\xi . M</code>, where
-				<code>i</code> is a natural number. Intuitively, this represents a function of one argument. Finally, given two
+				<code>i</code> is a natural number. Intuitively, this represents a function of one argument, <code>xi</code>.
+				Finally, given two
 				lambda-terms <code>M</code> and <code>N</code>, we can <em>apply</em> <code>M</code> to <code>N</code>.
 				Intuitively, this denotes the result of applying the function denoted by <code>M</code> to the function denoted
 				by <code>N</code>, and we write this <code>(M N)</code>.
@@ -231,7 +231,8 @@
 			</ul>
 			</p>
 			<p>
-				See if you can crash the server with a cleverly crafted lambda term, whose evaluation doesn't terminate ;)
+				See if you can crash the server with a cleverly crafted lambda term (hint: think of your program as an infinite
+				binary tree) ;)
 			</p>
 		</div>
 
@@ -277,21 +278,4 @@
 
 		</div>
 	</div>
-
-	<!--<script>-->
-	<!--	document.addEventListener('DOMContentLoaded', function () {-->
-	<!--		// Store scroll position in localStorage before form submission-->
-	<!--		const form = document.querySelector('form');-->
-	<!--		form.addEventListener('submit', function () {-->
-	<!--			localStorage.setItem('scrollPosition', window.scrollY);-->
-	<!--		});-->
-	<!---->
-	<!--		// Restore scroll position after page load-->
-	<!--		const scrollPosition = localStorage.getItem('scrollPosition');-->
-	<!--		if (scrollPosition) {-->
-	<!--			window.scrollTo(0, scrollPosition);-->
-	<!--			localStorage.removeItem('scrollPosition');-->
-	<!--		}-->
-	<!--	});-->
-	<!--</script>-->
 </body>
