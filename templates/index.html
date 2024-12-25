@@ -14,165 +14,8 @@
 		};
 	</script>
 	<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 	<title>LambdaPy</title>
-	<style>
-		* {
-			margin: 0;
-			padding: 0;
-			box-sizing: border-box;
-			font-family: Arial, sans-serif;
-		}
-
-		body {
-			background-color: #f4f4f9;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			min-height: 100vh;
-			color: #333;
-		}
-
-		.container {
-			background: #ffffff;
-			padding: 30px;
-			max-width: 900px;
-			width: 100%;
-			border-radius: 0 4px 8px rgba(0, 0, 0, 0.1);
-		}
-
-		h1 {
-			margin-bottom: 20px;
-			font-size: 24px;
-			color: #333;
-			text-align: center;
-			/*margin-bottom: 8px;*/
-		}
-
-		.subtitle {
-			font-size: 18px;
-			color: #666;
-			text-align: center;
-			margin-bottom: 20px;
-		}
-
-		.content {
-			display: flex;
-		}
-
-		.form-section {
-			flex: 1;
-			margin-right: 20px;
-		}
-
-		label {
-			display: block;
-			font-weight: bold;
-			margin-bottom: 8px;
-		}
-
-		input[type="text"] {
-			width: 100%;
-			padding: 10px;
-			margin-bottom: 15px;
-			border: 1px solid #ddd;
-			border-radius: 4px;
-			font-size: 16px;
-		}
-
-		button {
-			padding: 10px 20px;
-			font-size: 16px;
-			color: #ffffff;
-			background-color: #4CAF50;
-			border: none;
-			border-radius: 4px;
-			cursor: pointer;
-			transition: background-color 0.3s ease;
-		}
-
-		button:hover {
-			background-color: #45a049;
-		}
-
-		#history {
-			padding: 15px;
-			background-color: #f9f9f9;
-			border-radius: 4px;
-			border: 1px solid #ddd;
-			min-height: 150px;
-			max-height: 500px;
-			overflow-y: auto;
-			margin-bottom: 10px;
-		}
-
-		.history-container {
-			flex: 1;
-			display: flex;
-			flex-direction: column;
-		}
-
-		.history-item {
-			padding: 10px;
-			margin-bottom: 10px;
-			border: 1px solid #ddd;
-			border-radius: 4px;
-			background-color: #ffffff;
-		}
-
-		.history-item strong {
-			display: block;
-			font-weight: bold;
-			margin-bottom: 5px;
-		}
-
-		.clear-button {
-			align-self: center;
-			padding: 10px 20px;
-			font-size: 14px;
-			color: #ffffff;
-			background-color: #d9534f;
-			border: none;
-			border-radius: 4px;
-			cursor: pointer;
-			transition: background-color 0.3s ease;
-		}
-
-		.clear-button:hover {
-			background-color: #c9302c;
-		}
-
-		.section {
-			padding: 20px;
-			background-color: #f4f4f9;
-			border-radius: 8px;
-			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-			margin-bottom: 20px;
-		}
-
-		.section h2 {
-			font-size: 20px;
-			color: #333;
-			margin-bottom: 10px;
-		}
-
-		.section p {
-			line-height: 1.6;
-			color: #666;
-		}
-
-		ul {
-			padding-left: 3em;
-		}
-
-		code,
-		tt {
-			font-family: monospace;
-			font-size: 1em;
-			background-color: #d3d3d3;
-			padding: 2px 4px;
-			border-radius: 4px;
-		}
-	</style>
 </head>
 
 <body>
@@ -244,6 +87,12 @@
 					<input type="text" id="expression" name="expression" placeholder="Example: (\x1 . x1 x2)" required>
 					<button type="submit">Evaluate</button>
 				</form>
+
+				{% if error %}
+				<div class="error_message">
+					{{error}}
+				</div>
+				{% endif %}
 			</div>
 
 			<!-- History Section -->
