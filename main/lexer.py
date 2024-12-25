@@ -44,6 +44,21 @@ class Lexer:
     def error(self):
         raise Exception("Lexer error.")
 
+    def check_lambda(self):
+        curr_word = ""
+        temp_char = self.char
+        temp_pos = self.pos
+        while temp_char.isalpha():
+            curr_word += temp_char
+            temp_pos += 1
+            if temp_pos < self.max_len:
+                temp_char = self.input[temp_pos]
+            else:
+                temp_char = None
+        if curr_word == "lambda":
+            return True
+        return False
+
     def get_var(self):
         var_name = ""
         while self.char is not None and self.char.isalnum():
@@ -76,5 +91,7 @@ class Lexer:
             return Token(TokenTypes.DOT, ".")
 
         if self.char.isalpha():
+            if self.check_lambda():
+                token = Token(TokenTypes.LAMBDA, "lambda")
             token = self.get_var()
             return token
