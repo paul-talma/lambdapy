@@ -23,23 +23,59 @@
 	<div class="container">
 		<h1>LambdaPy</h1>
 		<h2 class="subtitle">An interpreter for the Lambda Calculus, written in Python</h2>
-
 		<div class="section">
 			<h2>The Lambda Calculus</h2>
 			<p>
 				The <a href="https://plato.stanford.edu/entries/lambda-calculus/">lambda calculus</a> is arguably the world's
 				simplest programming language.
-				It was discovered by <a href="https://plato.stanford.edu/entries/church/index.html">Alonzo Church</a> in 1936 as
+				Before you stands an interpreter for the lambda calculus: a program that reads in your lambda expression,
+				performs the computation it represents, and displays the result.
+				The lambda calculus was discovered by <a href="https://plato.stanford.edu/entries/church/index.html">Alonzo
+					Church</a> in 1936 as
 				part of his investigations into the foundations of mathematics and the nature of
 				computation.
 				Despite its simple syntax (the language has only three kinds of expressions), it is <a
-					href="https://en.wikipedia.org/wiki/Turing_completeness">maximally expressive</a>: any function that can be
-				computed by (say) a Python program can be represented by a lambda-expression.
+					href="https://en.wikipedia.org/wiki/Turing_completeness">maximally expressive</a>: any (e.g.) Python program
+				can be represented by a lambda-expression.
 				Due to its expressive completeness and flexibility, the lambda calculus has played a central role in the
 				development of modern programming languages, especially of the <a
-					href="https://en.wikipedia.org/wiki/Functional_programming">functional sort</a>.
-				The formalism and its many extensions continue to inspire researchers and programmers alike.
+					href="https://en.wikipedia.org/wiki/Functional_programming">functional sort</a>, and it continues to inspire
+				researchers and programmers alike.
 			</p>
+		</div>
+
+		<div class="content">
+			<!-- Form Section -->
+			<div class="form-section">
+				<form action="/evaluate" method="post">
+					<label for="expression">Enter Lambda Expression</label>
+					<input type="text" id="expression" name="expression" placeholder="Example: (\x1 . x1 x2)" required>
+					<button type="submit">Evaluate</button>
+				</form>
+
+				{% if error %}
+				<div class="error_message">
+					{{error}}
+				</div>
+				{% endif %}
+			</div>
+
+			<!-- Recent expressions -->
+			<div class="history-container">
+				<div id="history">
+					<h2>Recent expressions</h2>
+					{% for item in history %}
+					<div class="history-item">
+						<strong>This expression</strong> \[ {{ item.latex_input | safe }} \]
+						<strong>evaluates to</strong> \[ {{ item.latex_output | safe }} \]
+					</div>
+					{% endfor %}
+				</div>
+
+				<form action="/clear_history" method="post">
+					<button type="submit" class="clear-button">Clear history</button>
+				</form>
+			</div>
 		</div>
 
 		<div class="section">
@@ -63,7 +99,7 @@
 				is unique, and represents the output of the computation.
 			</p>
 			<p style="margin-bottom:2rem">
-				Try it below! Enter an expression following the above syntactical rules and run the computation using
+				Try it above! Enter an expression following the above syntactical rules and run the computation using
 				"Evaluate." Don't forget parentheses around (and only around) function applications.
 			</p>
 			<p>
@@ -79,52 +115,27 @@
 			</p>
 		</div>
 
-		<div class="content">
-			<!-- Form Section -->
-			<div class="form-section">
-				<form action="/evaluate" method="post">
-					<label for="expression">Enter Lambda Expression</label>
-					<input type="text" id="expression" name="expression" placeholder="Example: (\x1 . x1 x2)" required>
-					<button type="submit">Evaluate</button>
-				</form>
 
-				{% if error %}
-				<div class="error_message">
-					{{error}}
-				</div>
-				{% endif %}
-			</div>
 
-			<!-- History Section -->
-			<div class="history-container">
-				<div id="history">
-					<h2>Recent expressions</h2>
-					{% for item in history %}
-					<div class="history-item">
-						<strong>This expression</strong> \[ {{ item.latex_input | safe }} \]
-						<strong>evaluates to</strong> \[ {{ item.latex_output | safe }} \]
-					</div>
-					{% endfor %}
-				</div>
 
-				<form action="/clear_history" method="post">
-					<button type="submit" class="clear-button">Clear history</button>
-				</form>
-			</div>
-		</div>
-		<div>
+		<div class="section">
 			<h2>Information</h2>
-			<p style="margin-bottom:2rem">
-				Made by <a href="https://github.com/paul-talma">Paul Talma</a>. My implementation of
+			<p>
+				Made by <a href="https://github.com/paul-talma">Paul Talma</a>.
+			</p>
+			<p style=" margin-bottom:2rem">
+				My implementation of
 				the parser and interpreter
 				was inspired by <a href="https://ruslanspivak.com/">Ruslan Spivak's</a> <a
 					href="https://ruslanspivak.com/lsbasi-part1/">"Let's
 					Build a Simple Interpreter"</a>.
 			</p>
-			<p style="margin-bottom:2rem">
-				<a href="https://github.com/paul-talma/lambdapy/tree/main">Github.</a>
+			<p>
+				<a href="https://github.com/paul-talma/lambdapy/tree/main">Github repository.</a>
 			</p>
 
 		</div>
+
 	</div>
+
 </body>
