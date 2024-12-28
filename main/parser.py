@@ -4,6 +4,11 @@
 # application: LPAR term term RPAR
 # variable: VARID
 
+
+class ParserError(Exception):
+    """Unexpected token"""
+
+
 from main.terms import Variable, Abstraction, Application
 from main.lexer import TokenTypes
 
@@ -16,11 +21,11 @@ class Parser:
     def parse(self):
         tree = self.term()
         if self.token.type != TokenTypes.EOS:
-            self.error()
+            self.type_error()
         return tree
 
-    def error(self, type):
-        raise Exception(
+    def type_error(self, type):
+        raise ParserError(
             f"Parser error. Expected type {type} but got Token: {self.token}"
         )
 
@@ -28,7 +33,7 @@ class Parser:
         if self.token.type == type:
             self.token = self.lexer.get_token()
         else:
-            self.error(type)
+            self.type_error(type)
 
     def term(self):
         if self.token.type == TokenTypes.VAR:
