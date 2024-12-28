@@ -43,7 +43,7 @@ def evaluate():
     except ParserError as e:
         app.logger.error(f"Error message: {e}.\n")
         return render_template("index.html", history=session["history"], error=str(e))
-    except RecursionError as e:
+    except RecursionError:
         return render_template(
             "index.html", history=session["history"], error="Nice try ;)"
         )
