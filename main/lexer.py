@@ -53,13 +53,6 @@ class Lexer:
             return Token(TokenTypes.LAMBDA, "lambda")
         return Token(TokenTypes.VAR, word)
 
-    # def get_var(self):
-    #     var_name = ""
-    #     while self.char is not None and self.char.isalnum():
-    #         var_name += self.char
-    #         self.advance()
-    #     return Token(TokenTypes.VAR, var_name)
-
     def get_token(self):
         if self.pos >= self.max_len:
             return Token(TokenTypes.EOS, None)
